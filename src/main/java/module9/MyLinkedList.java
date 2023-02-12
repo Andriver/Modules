@@ -1,7 +1,7 @@
 package module9;
 
 public class MyLinkedList<T> {
-    Nodes<T> head;
+    NodesForMyLinkedList<T> head;
 
     int counter = 0;
 
@@ -10,8 +10,8 @@ public class MyLinkedList<T> {
     }
 
     public void add(T value) {
-        Nodes<T> node = new Nodes<>(value);
-        Nodes<T> secondNode = head;
+        NodesForMyLinkedList<T> node = new NodesForMyLinkedList<>(value);
+        NodesForMyLinkedList<T> secondNode = head;
         if (head == null) {
             head = node;
         } else {
@@ -24,7 +24,7 @@ public class MyLinkedList<T> {
     }
 
     public T get(int index) {
-        Nodes<T> node = head;
+        NodesForMyLinkedList<T> node = head;
         int step = 0;
         while (head != null) {
             if (index == step & step <= counter) {
@@ -37,8 +37,8 @@ public class MyLinkedList<T> {
     }
 
     public T remove(int index) {
-        Nodes<T> node = head;
-        Nodes<T> nextNode = null;
+        NodesForMyLinkedList<T> node = head;
+        NodesForMyLinkedList<T> nextNode = null;
         T el = null;
 
         int step = 0;
@@ -68,7 +68,7 @@ public class MyLinkedList<T> {
     @Override
     public String toString() {
         StringBuilder write = new StringBuilder();
-        Nodes<T> node = head;
+        NodesForMyLinkedList<T> node = head;
         if (node == null) {
             write.append("Head null");
         } else while (node != null) {
@@ -83,7 +83,7 @@ public class MyLinkedList<T> {
     }
 
     public void clear() {
-        Nodes<T> node = head;
+        NodesForMyLinkedList<T> node = head;
         while (head != null & counter != 0) {
             node.next = null;
             node.item = null;
