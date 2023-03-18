@@ -27,7 +27,6 @@ hs_err_pid*
 .iml
 .ipr
 .gitignore
-pom.xml
 target
 .DS_STORE /src/main/resources/log
 /out
