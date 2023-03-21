@@ -1,5 +1,6 @@
 package module11;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static module11.OwnRandValue.*;
@@ -35,12 +36,18 @@ public class TestModule11 {
         System.out.println(StringValue.makeStringFromArray(list3));
         System.out.println();
 
-        System.out.println(OwnRandValue.lineaCongruentGenerator(c, a, m));
+        //System.out.println(OwnRandValue.lineaCongruentGenerator(c, a, m));
+
+        OwnRandValue.lineaCongruentGenerator(c, a, m)
+                .limit(10)
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
         System.out.println();
 
 
-        Stream<Integer> array = Stream.of(1,3,4);
-        Stream<Integer> secondArray = Stream.of(2,6,7,8);
-        System.out.println(Zip.zip(array, secondArray));
+        Stream<Integer> first = Stream.of(1, 2, 3, 4);
+        Stream<Integer> second = Stream.of(5, 6, 7);
+        Stream<Integer> zipped = Zip.zip(first, second);
+        zipped.forEach(System.out::println); // Output: 1 5 2 6 3 7
     }
 }

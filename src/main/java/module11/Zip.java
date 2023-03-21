@@ -1,15 +1,11 @@
 package module11;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.Iterator;
 import java.util.stream.Stream;
 
 public class Zip {
-    public static <T> List<T> zip(Stream<T> first, Stream<T> second) {
-        Spliterator<T> splitFirst = first.spliterator();
-        Spliterator<T> splitSecond = second.spliterator();
-        List<T> list = new ArrayList<>();
-        while (splitFirst.tryAdvance(list::add) && splitSecond.tryAdvance(list::add)) ;
-        return list;
+    public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
+        Iterator<T> secondIterator = second.iterator();
+        return first.flatMap(e -> secondIterator.hasNext() ? Stream.of(e, secondIterator.next()) : Stream.empty())
+                .map(e -> (T) e);
     }
 }
