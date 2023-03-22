@@ -1,18 +1,15 @@
 package module11;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class StringValue {
     public static String makeStringFromArray(ArrayList<String> list) {
-        StringBuilder sb = new StringBuilder();
-        Comparator<Integer> comp = (a, b) -> a - b;
-        list.stream()
-                .flatMap(s -> Stream.of(s.split(", ")))
+        return Arrays.stream(list.toArray(new String[0]))
+                .flatMap(s -> Arrays.stream(s.split(",\\s*")))
                 .map(Integer::parseInt)
-                .sorted(comp)
-                .forEach(i -> sb.append(i).append(", "));
-        sb.setLength(sb.length() - 2); // remove last comma and space
-        return sb.toString();
+                .sorted()
+                .map(Object::toString)
+                .collect(Collectors.joining(", "));
     }
 }

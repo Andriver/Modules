@@ -8,6 +8,6 @@ public class Name {
         return IntStream.range(0, list.size())
                 .filter(i -> i % 2 != 0)
                 .mapToObj(i -> i + ". " + list.get(i))
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining(", "));
     }
 }
